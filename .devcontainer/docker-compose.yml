@@ -1,0 +1,14 @@
+services:
+    main:
+      image: ml_dev_vscode
+      build:
+        dockerfile: .devcontainer/Dockerfile
+        context: ..
+        args:
+          USERNAME: victor
+      runtime: nvidia
+      volumes:
+        - ..:/ws
+      environment:
+        - TOKENIZERS_PARALLELISM=true
+      command: /bin/sh -c "while sleep 1000; do :; done"
